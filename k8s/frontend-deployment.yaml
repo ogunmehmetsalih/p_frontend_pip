@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proguven-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: proguven-frontend
+  template:
+    metadata:
+      labels:
+        app: proguven-frontend
+    spec:
+      containers:
+        - name: proguven-frontend
+          image: msalihogun/proguven-frontend:latest
+          ports:
+            - containerPort: 3000
