@@ -20,9 +20,9 @@ pipeline {
         }
         stage('Push Docker Image') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_HUB_USER', passwordVariable: 'DOCKER_HUB_PASS')]) {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_HUB_USER', passwordVariable: 'DOCKER_HUB_PASS')]) {
                     script {
-                        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-creds') {
+                        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
                             docker.image("${DOCKER_IMAGE}").push()
                         }
                     }
